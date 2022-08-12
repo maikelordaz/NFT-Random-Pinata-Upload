@@ -8,7 +8,7 @@ const {
     FUND_AMOUNT,
 } = require("../helper-hardhat-config")
 
-const imagesLocation = "./images/randomNft"
+const imagesLocation = "./images"
 /*
 * Puedo simplemente colocarlo asi o automatizar la subida a piñata que es lo que hago en este 
 * script. Luego de hecho el deploy en consola voy a obtener los CID, podria tomarlos y cambiar
@@ -70,7 +70,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
     const waitBlockConfirmations = developmentChains.includes(network.name)
         ? 1
-        : VERIFICATION_BLOCK_CONFIRMATIONS
+        : network.config.blockConfirmations
 
     const args = [
         vrfCoordinatorV2Address,
