@@ -1,6 +1,8 @@
-# NFT Basics
+# NFT Random
 
-This is a solidity project to show the basics of an NFT project
+This is a solidity project to mint random NFTs using
+Chainlink VRF and giving raity atributes to those NFTs.
+And then upload to Pinata via scripts
 
 ## :rocket: INSTALLATION
 
@@ -14,6 +16,8 @@ This is a solidity project to show the basics of an NFT project
 ## :floppy_disk: TECNOLOGIES
 
 + Openzeppelin
++ Chainlink VRF
++ Pinata
 
 ## :abacus: TEST
 
