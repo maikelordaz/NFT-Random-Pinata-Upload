@@ -35,6 +35,7 @@
     "compile": "yarn hardhat compile",
     "deploy": "yarn hardhat deploy",
     "test": "yarn hardhat test",
-    "coverage": "yarn hardhat coverage"
+    "coverage": "yarn hardhat coverage",
+    "rinkeby": "yarn hardhat deploy --network rinkeby"
   }
 }

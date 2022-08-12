@@ -1,7 +1,7 @@
 const { network, ethers } = require("hardhat")
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
-    const { deployer } = await ethers.getNamedAccounts()
+    const { deployer } = await getNamedAccounts()
     const chainId = network.config.chainId
 
     const randomIpfsNft = await ethers.getContract("RandomIpfsNft", deployer)
