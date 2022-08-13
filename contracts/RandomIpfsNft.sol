@@ -1,15 +1,4 @@
 // SPDX-License-Identifier: MIT
-
-/*
- * Cuando minteamos un NFT hacemos la llamada al Chainlink VRF por un numero al azar
- * Con ese numero obtenemos un NFT al azar
- * Pug, Shiba, San Bernardo
- * Pug -> Super raro
- * Shiba -> Raro
- * San Benardo -> Comun
- * Hay que pagar para mintear
- * El dueño del contrato puede retirar el dinero recogido por mintear
- */
 pragma solidity ^0.8.8;
 
 // IMPORTS CONTRACTS
@@ -144,5 +133,4 @@ contract RandomIpfsNft is VRFConsumerBaseV2, ERC721URIStorage, Ownable {
     function getDogTokenUri(uint256 index) public view returns (string memory) {
         return s_dogTokenUri[index];
     }
-
 }

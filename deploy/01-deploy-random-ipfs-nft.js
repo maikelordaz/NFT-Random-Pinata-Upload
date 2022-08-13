@@ -9,29 +9,7 @@ const {
 } = require("../helper-hardhat-config")
 
 const imagesLocation = "./images"
-/*
-* Puedo simplemente colocarlo asi o automatizar la subida a piñata que es lo que hago en este 
-* script. Luego de hecho el deploy en consola voy a obtener los CID, podria tomarlos y cambiar
-* let tokenUris 
-* por
-* let tokenUris = 
-[
-    "ipfs://QmaVkBn2tKmjbhphU7eyztbvSQU5EXDdqRyXZtRhSGgJGo",
-    "ipfs://QmYQC5aGZu2PTH8XzbJrbDnvhj3gVs7ya33H9mqUNvST3d",
-    "ipfs://QmZYmH5iDbD6v3U2ixoVAjioSzvWJszDzYdbeCLquGSpVm",
-]
-* Luego de eso voy a mi archivo .env y cambio el UPLOAD_TO_PINATA a false, de esta forma no
-* entra en el if que ejecuta la funcion que se llama handleTokenUris(), que es la que sube 
-* las imagenes y la metadata a Pinata, al tener que subirlo a Pinata tarda en hacerlo, y ni 
-* Pinata ni IPFS acepta duplicados así que el CID va a seguir siendo el mismo. La función solo
-* se tiene que ejecutar una vez. Una vez lo haga tomo los CID los añado a mi propio nodo de 
-* IPFS y lo pineo ahi, así los tengo en mi nodo local y en el servidor de Pinata
-*/
 let tokenUris
-/*
- * Con plantillas de este estilo es que añado cualquier tipo de caracteristica a mis NFT
- * Si estos atributos se guardan on chain mi contrato puede interatuar con ellos
- */
 const metadataTemplate = {
     name: "",
     description: "",
@@ -98,10 +76,6 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 
 async function handleTokenUris() {
     tokenUris = []
-    /*
-     * Este const de abajo me va a dar una lista de respuestas desde piñata, luego hago un loop
-     * con el for por cada una de esas respuestas
-     */
     const { responses: imageUploadResponses, files } = await storeImages(imagesLocation)
     for (imageUploadResponseIndex in imageUploadResponses) {
         let tokenUriMetadata = { ...metadataTemplate }
